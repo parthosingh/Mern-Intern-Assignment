@@ -19,7 +19,7 @@ const StudentDashboard = () => {
       if (!token) {
         throw new Error('No token found. Please log in.');
       }
-      const res = await fetch('http://localhost:8080/api/students/profile', {
+      const res = await fetch('https://mern-intern-assignment-backend.onrender.com/api/students/profile', {
         method: 'GET',
         headers: {
           Authorization: `Bearer ${token}`,
@@ -79,7 +79,7 @@ const StudentDashboard = () => {
       if (storedRole !== 'Student') {
         throw new Error(`Access denied. Your role is '${storedRole}'. Only students can update profiles.`);
       }
-      const res = await fetch('http://localhost:8080/api/students/profile', {
+      const res = await fetch('https://mern-intern-assignment-backend.onrender.com/api/students/profile', {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',
