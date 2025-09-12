@@ -83,7 +83,6 @@ const Signup = () => {
             name="course"
             value={formData.course}
             onChange={handleChange}
-            required
           />
         </div>
         <button type="submit">Sign Up</button>
