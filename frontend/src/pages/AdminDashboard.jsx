@@ -16,7 +16,7 @@ const AdminDashboard = () => {
   const fetchStudents = async () => {
     try {
       const token = localStorage.getItem('token');
-      const res = await fetch('http://localhost:8080/api/students', {
+      const res = await fetch('https://mern-intern-assignment-backend.onrender.com/api/students', {
         method: 'GET',
         headers: {
           Authorization: `Bearer ${token}`,
@@ -73,7 +73,7 @@ const AdminDashboard = () => {
   const handleDelete = async (id) => {
     try {
       const token = localStorage.getItem('token');
-      const res = await fetch(`http://localhost:8080/api/students/${id}`, {
+      const res = await fetch(`https://mern-intern-assignment-backend.onrender.com/api/students/${id}`, {
         method: 'DELETE',
         headers: {
           Authorization: `Bearer ${token}`,
