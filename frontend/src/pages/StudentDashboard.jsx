@@ -1,4 +1,3 @@
-
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 
@@ -19,7 +18,7 @@ const StudentDashboard = () => {
       if (!token) {
         throw new Error('No token found. Please log in.');
       }
-      const res = await fetch('https://mern-intern-assignment-backend.onrender.com/api/students/profile', {
+      const res = await fetch('http://localhost:8080/api/students/profile', {
         method: 'GET',
         headers: {
           Authorization: `Bearer ${token}`,
@@ -70,6 +69,8 @@ const StudentDashboard = () => {
       const token = localStorage.getItem('token');
       const storedUser = JSON.parse(localStorage.getItem('user') || '{}');
       const storedRole = storedUser.role;
+      const studentId = storedUser.id
+      console.log(storedUser)
       console.log('Token:', token ? 'Present' : 'Missing');  // Debug: Token check
       console.log('Stored Role:', storedRole);  // Debug: Role check (from localStorage)
       console.log('Updating profile with:', formData);  // Debug: FormData
@@ -79,7 +80,7 @@ const StudentDashboard = () => {
       if (storedRole !== 'Student') {
         throw new Error(`Access denied. Your role is '${storedRole}'. Only students can update profiles.`);
       }
-      const res = await fetch('https://mern-intern-assignment-backend.onrender.com/api/students/profile', {
+      const res = await fetch(`http://localhost:8080/api/students/profile/${studentId}`, {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',
